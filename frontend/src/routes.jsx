@@ -18,7 +18,7 @@ export const routes = [
   },
   {
     icon: UserCircleIcon,
-    name: "AboutUs",
+    name: "About Us",
     path: "/aboutus",
     element: <AboutUs />,
   },
