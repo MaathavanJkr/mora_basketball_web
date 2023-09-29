@@ -12,7 +12,7 @@ import {
 export const routes = [
   {
     icon: HomeIcon,
-    name: "home",
+    name: "Home",
     path: "/home",
     element: <Home />,
   },

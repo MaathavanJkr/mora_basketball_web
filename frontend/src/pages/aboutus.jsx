@@ -1,31 +1,29 @@
 import {
-  Avatar, Typography, Button, Card, List, ListItem, Tabs,
+  Avatar, Typography, Button, Card, List, ListItem, Select, Option, Tabs,
   TabsHeader,
   TabsBody,
   Tab,
   TabPanel,
 } from "@material-tailwind/react";
-import {
-  MapPinIcon,
-  BriefcaseIcon,
-  BuildingLibraryIcon,
-} from "@heroicons/react/24/solid";
 import { Footer } from "@/widgets/layout";
 import axios from "../axios";
 import { useEffect, useState } from "react";
-
+import ReactMarkdown from "react-markdown";
 
 export function AboutUs() {
   const [teamDetails, setTeamDetails] = useState([]);
+  const [openTab, setOpenTab] = useState();
+
   const config = {
     headers: { Authorization: `Bearer ${import.meta.env.VITE_STRAPI_API_TOKEN}` }
   };
   useEffect(() => {
     axios
-      .get(`/team-details`, config)
+      .get(`/team-details?sort=year:desc`, config)
       .then((res) => {
         setTeamDetails(res.data.data);
-        console.log(res.data.data)
+        setOpenTab(res.data.data[0].attributes.year.toString())
+        console.log(openTab)
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -38,7 +36,7 @@ export function AboutUs() {
         <div className="absolute top-0 h-full w-full bg-black/75 bg-cover bg-center" />
       </section>
 
-      <section className="relative bg-blue-gray-50/50 pt-20">
+      <section className="relative bg-blue-gray-50/50 pt-10">
         <div className="mx-auto">
           <div className="relative -mt-64 mb-6 flex w-full min-w-0 flex-col break-words rounded-3xl bg-white shadow-xl shadow-gray-500/5">
             <div className="px-6">
@@ -127,29 +125,53 @@ export function AboutUs() {
                 </div>
               </div> */}
 
-              {/* <div className="mb-10 border-blue-gray-50 text-center">
+              <div className="mb-10 border-blue-gray-50">
+                <div className="block md:hidden">
+                  <Select size="lg" label="Select Year" onChange={(e) => setOpenTab(e)}>
+                    {teamDetails.map(({ attributes }) => {
+                      return (<Option value={attributes.year}>
+                        {attributes.year}
+                      </Option>)
+                    })}
+                  </Select>
+                </div>
                 <div className="flex flex-row">
-                  <div>
-                    <Card className="w-full max-w-[20rem] h-[50vh] p-4 shadow-xl shadow-blue-gray-900/5">
+                  <div className="hidden md:block">
+                    <Card className="w-full max-w-[20rem] md:h-[75vh] p-4 shadow-xl shadow-blue-gray-900/5">
                       <List>
-                        {teamDetails.map((item, i) => {
-                          return (<ListItem>
-                            {item.attributes.year}
+                        {teamDetails.map(({ attributes }) => {
+                          return (<ListItem onClick={() => setOpenTab(attributes.year)}>
+                            {attributes.year}
                           </ListItem>)
                         })}
                       </List>
                     </Card>
                   </div>
-                  <div className="w-full pl-2">
-                    <Card className="w-full h-[50vh] p-4 shadow-xl shadow-blue-gray-900/5">
-                      Hello
-                    </Card>
+                  <div className="w-full md:pl-2">
+                    {teamDetails.map(({ attributes }) => {
+                      let show = attributes.year == openTab ? "block" : "hidden";
+                      return (<Card className={"w-full md:h-[75vh] overflow-y-scroll p-4 shadow-xl shadow-blue-gray-900/5 " + show}>
+                        <div className="my-0">
+                          <Typography variant="h2" color="blue-gray" className="mb-2">
+                            {attributes.year} Basketball
+                          </Typography>
+                          <img
+                            className="h-100 w-full rounded-lg object-cover object-center mt-4"
+                            src={attributes.main_image}
+                            alt={attributes.year}
+                          />
+                          <div className="mt-6 mb-2 font-medium">
+                            <ReactMarkdown>{attributes.description}</ReactMarkdown>
+                          </div>
+                        </div>
+                      </Card>)
+                    })}
                   </div>
                 </div>
 
-              </div> */}
+              </div>
 
-              <Tabs value="html" orientation="vertical" className="py-4">
+              {/* <Tabs value="html" orientation="vertical" className="py-4">
                 <TabsHeader className="w-32">
                   {teamDetails.map(({ id, attributes }) => (
                     <Tab key={id} value={id}>
@@ -169,16 +191,47 @@ export function AboutUs() {
                           src={attributes.main_image}
                           alt={attributes.year}
                         />
-                        <div className="mb-2">
-                          <Typography className="font-medium text-blue-gray-700">
-                            {attributes.description}
-                          </Typography>
+                        <div className="mb-2 font-medium">
+                            <ReactMarkdown>{attributes.description}</ReactMarkdown>
                         </div>
                       </div>
                     </TabPanel>
                   ))}
                 </TabsBody>
-              </Tabs>
+              </Tabs> */}
+
+              {/* <div>
+                <div className="container mx-auto">
+                  <div className="flex flex-col items-center justify-center max-w-xl">
+                    <ul className="flex space-x-2">
+                      {tabs.map((tab) => (
+                        <li key={tab.name}>
+                          <a
+                            href={tab.link}
+                            onClick={() => setOpenTab(tab.name)}
+                            className="inline-block px-4 py-2 text-gray-600 bg-white rounded shadow"
+                          >
+                            {tab.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="p-3 mt-6 bg-white border">
+                      {tabs.map((tab) => (
+                        <div
+                          key={tab.name}
+                          className={
+                            tab.name === openTab ? "block" : "hidden"
+                          }
+                        >
+                          {tab.content}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+
             </div>
           </div>
         </div>

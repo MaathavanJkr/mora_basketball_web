@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-export function Navbar({ brandName, routes, action }) {
+export function Navbar({ routes, action }) {
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
@@ -65,7 +65,13 @@ export function Navbar({ brandName, routes, action }) {
       <div className="container mx-auto flex items-center justify-between text-white">
         <Link to="/">
           <Typography className="ml-2 mr-4 cursor-pointer py-1.5 font-bold">
-            {brandName}
+            <a href="https://www.uom.lk" target="_blank">
+              <img
+                src="/public/img/uom_logo.png"
+                alt="UOM Logo"
+                style={{ marginRight: "5px", maxHeight: "75px", maxWidth: "75px" }}
+              />
+            </a>
           </Typography>
         </Link>
         <div className="hidden lg:block">{navList}</div>
@@ -121,15 +127,6 @@ export function Navbar({ brandName, routes, action }) {
 }
 
 Navbar.defaultProps = {
-  brandName: (
-    <a href="https://www.uom.lk" target="_blank">
-      <img
-        src="/public/img/uom_logo.png"
-        alt="UOM Logo"
-        style={{ marginRight: "5px", maxHeight: "75px", maxWidth: "75px" }}
-      />
-    </a>
-  ),
   action: (
     <a href="https://www.facebook.com/MoraBasketball" target="_blank">
       <img
