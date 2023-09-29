@@ -14,16 +14,12 @@ export function AboutUs() {
   const [teamDetails, setTeamDetails] = useState([]);
   const [openTab, setOpenTab] = useState();
 
-  const config = {
-    headers: { Authorization: `Bearer ${import.meta.env.VITE_STRAPI_API_TOKEN}` }
-  };
   useEffect(() => {
     axios
-      .get(`/team-details?sort=year:desc`, config)
+      .get(`/team-details?sort=year:desc`)
       .then((res) => {
         setTeamDetails(res.data.data);
         setOpenTab(res.data.data[0].attributes.year.toString())
-        console.log(openTab)
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -129,7 +125,7 @@ export function AboutUs() {
                 <div className="block md:hidden">
                   <Select size="lg" label="Select Year" onChange={(e) => setOpenTab(e)}>
                     {teamDetails.map(({ attributes }) => {
-                      return (<Option value={attributes.year}>
+                      return (<Option key={attributes.year} value={attributes.year}>
                         {attributes.year}
                       </Option>)
                     })}
@@ -140,7 +136,7 @@ export function AboutUs() {
                     <Card className="w-full max-w-[20rem] md:h-[75vh] p-4 shadow-xl shadow-blue-gray-900/5">
                       <List>
                         {teamDetails.map(({ attributes }) => {
-                          return (<ListItem onClick={() => setOpenTab(attributes.year)}>
+                          return (<ListItem key={attributes.year} onClick={() => setOpenTab(attributes.year)}>
                             {attributes.year}
                           </ListItem>)
                         })}
@@ -150,7 +146,7 @@ export function AboutUs() {
                   <div className="w-full md:pl-2">
                     {teamDetails.map(({ attributes }) => {
                       let show = attributes.year == openTab ? "block" : "hidden";
-                      return (<Card className={"w-full md:h-[75vh] overflow-y-scroll p-4 shadow-xl shadow-blue-gray-900/5 " + show}>
+                      return (<Card key={attributes.year} className={"w-full md:h-[75vh] overflow-y-scroll p-4 shadow-xl shadow-blue-gray-900/5 " + show}>
                         <div className="my-0">
                           <Typography variant="h2" color="blue-gray" className="mb-2">
                             {attributes.year} Basketball
