@@ -4,6 +4,8 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  Dialog,
+  DialogBody
 } from "@material-tailwind/react";
 import { Footer } from "@/widgets/layout";
 import axios from "../axios";
@@ -14,15 +16,17 @@ import ReactMarkdown from "react-markdown";
 export function Gallery() {
   const [photos, setPhotos] = useState([]);
   const [open, setOpen] = useState(false);
+  const [previewImg, setPreviewImg] = useState();
+
   let [searchParams, setSearchParams] = useSearchParams();
   const year = searchParams.get("year")
-  
+
   const handleOpen = () => setOpen((cur) => !cur);
 
   useEffect(() => {
-    let query = year ? `&filters\[year\][$eq]=${year}`: ""
+    let query = year ? `&filters\[year\][$eq]=${year}` : ""
     axios
-      .get(`/photos?populate=*`+query)
+      .get(`/photos?populate=*` + query)
       .then((res) => {
         setPhotos(res.data.data);
         console.log(res.data.data)
@@ -48,16 +52,29 @@ export function Gallery() {
                   {photos &&
                     photos.map(({ id, attributes }) => (
                       <Card key={id}
-                          className="h-64 lg:w-[20vw] md:w-[30vw] cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
-                          onClick={handleOpen}
-                        >
-                          <img
-                            alt="nature"
-                            className="h-full w-full object-cover object-center"
-                            src={import.meta.env.VITE_STRAPI_URL + attributes.img.data[0].attributes.formats.thumbnail.url}
-                          />
-                        </Card>
+                        className="h-64 lg:w-[20vw] md:w-[30vw] cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
+                        onClick={() => {
+                          handleOpen();
+                          setPreviewImg(import.meta.env.VITE_STRAPI_URL + attributes.img.data[0].attributes.url)
+                        }}
+                      >
+                        <img
+                          alt="nature"
+                          className="h-full w-full object-cover object-center"
+                          src={import.meta.env.VITE_STRAPI_URL + attributes.img.data[0].attributes.formats.thumbnail.url}
+                        />
+                      </Card>
                     ))}
+
+                  <Dialog size="xl" open={open} handler={handleOpen}>
+                    <DialogBody className="p-0">
+                      <img
+                        alt="nature"
+                        className="max-h-[95vh] w-full object-cover object-center"
+                        src={previewImg}
+                      />
+                    </DialogBody>
+                  </Dialog>
                 </div>
 
               </div>
