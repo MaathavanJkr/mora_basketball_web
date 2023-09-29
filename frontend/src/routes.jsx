@@ -18,7 +18,7 @@ export const routes = [
   },
   {
     icon: UserCircleIcon,
-    name: "About Us",
+    name: "Teams",
     path: "/aboutus",
     element: <AboutUs />,
   },
@@ -30,13 +30,13 @@ export const routes = [
   },
   {
     icon: PhotoIcon,
-    name: "View Gallery",
+    name: "Gallery",
     path: "/gallery",
     element: <Gallery />,
   },
   {
     icon: PhoneIcon,
-    name: "Blogs",
+    name: "Contact Us",
     href: "https://www.material-tailwind.com/docs/react/installation",
     target: "_blank",
     element: "",

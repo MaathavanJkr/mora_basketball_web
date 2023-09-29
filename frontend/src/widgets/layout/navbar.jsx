@@ -74,6 +74,18 @@ export function Navbar({ routes, action }) {
             </a>
           </Typography>
         </Link>
+        <Link to="/" className="lg:hidden">
+          <Typography className="ml-2 mr-4 cursor-pointer py-1.5 font-bold">
+            <a href="https://www.facebook.com/MoraBasketball" target="_blank">
+              <img
+                className="rounded-full"
+                src="/public/img/favicon.jpeg"
+                alt="MoraBB Logo"
+                style={{ marginRight: "5px", maxHeight: "75px", maxWidth: "75px" }}
+              />
+            </a>
+          </Typography>
+        </Link>
         <div className="hidden lg:block">{navList}</div>
         <div className="hidden gap-2 lg:flex">
           <a
@@ -108,18 +120,6 @@ export function Navbar({ routes, action }) {
       >
         <div className="container mx-auto">
           {navList}
-          <a
-            href="https://www.material-tailwind.com/blocks/react?ref=mtkr"
-            target="_blank"
-            className="mb-2 block"
-          >
-            <Button variant="text" size="sm" fullWidth>
-              pro version
-            </Button>
-          </a>
-          {React.cloneElement(action, {
-            className: "w-full block",
-          })}
         </div>
       </MobileNav>
     </MTNavbar>
@@ -130,6 +130,7 @@ Navbar.defaultProps = {
   action: (
     <a href="https://www.facebook.com/MoraBasketball" target="_blank">
       <img
+        className="rounded-full"
         src="/public/img/favicon.jpeg"
         alt="MoraBB Logo"
         style={{ marginRight: "5px", maxHeight: "75px", maxWidth: "75px" }}
