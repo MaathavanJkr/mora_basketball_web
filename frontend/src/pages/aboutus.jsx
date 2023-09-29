@@ -32,75 +32,27 @@ export function AboutUs() {
         <div className="absolute top-0 h-full w-full bg-black/75 bg-cover bg-center" />
       </section>
 
-      <section className="relative bg-blue-gray-50/50 pt-10">
+      <section className="relative">
         <div className="mx-auto">
-          <div className="relative -mt-64 mb-6 flex w-full min-w-0 flex-col break-words rounded-3xl bg-white shadow-xl shadow-gray-500/5">
+          <div className="relative -mt-64 flex w-full min-w-0 flex-col break-words rounded-3xl bg-blue-gray-100 shadow-xl shadow-gray-500/5">
             <div className="px-6">
               <div className="flex flex-wrap justify-center">
-                <div className="flex w-full justify-center px-4 lg:order-2 lg:w-3/12">
+                {/* <div className="flex w-full justify-center px-4 lg:order-2 lg:w-3/12">
                   <div className="relative">
                     <div className="-mt-20 w-40">
                       <Avatar
-                        src="/img/favicon.jpeg"
+                        src="https://i.pinimg.com/1200x/f5/c3/9a/f5c39a98bde8aefe463aeddf343c127f.jpg"
                         alt="Profile picture"
                         variant="circular"
                         className="h-full w-full shadow-xl"
                       />
                     </div>
                   </div>
-                </div>
-
-                <div className="mt-10 flex w-full justify-center px-4 lg:order-3 lg:mt-0 lg:w-4/12 lg:justify-end lg:self-center">
-                  <Button className="bg-blue-400">View Gallery</Button>
-                </div>
-                <div className="w-full px-4 lg:order-1 lg:w-4/12">
-                  <div className="flex justify-center py-4 pt-8 lg:pt-4">
-                    <div className="mr-4 p-3 text-center">
-                      <Typography
-                        variant="lead"
-                        color="blue-gray"
-                        className="font-bold uppercase"
-                      >
-                        22
-                      </Typography>
-                      <Typography
-                        variant="small"
-                        className="font-normal text-blue-gray-500"
-                      >
-                        Friends
-                      </Typography>
-                    </div>
-                    <div className="mr-4 p-3 text-center">
-                      <Typography
-                        variant="lead"
-                        color="blue-gray"
-                        className="font-bold uppercase"
-                      >
-                        10
-                      </Typography>
-                      <Typography
-                        variant="small"
-                        className="font-normal text-blue-gray-500"
-                      >
-                        Photos
-                      </Typography>
-                    </div>
-                    <div className="p-3 text-center lg:mr-4">
-                      <Typography
-                        variant="lead"
-                        color="blue-gray"
-                        className="font-bold uppercase"
-                      >
-                        89
-                      </Typography>
-                      <Typography
-                        variant="small"
-                        className="font-normal text-blue-gray-500"
-                      >
-                        Comments
-                      </Typography>
-                    </div>
-                  </div>
+                </div> */}
+                <div className="flex w-full justify-center">
+                  <Typography variant="h1" color="blue-gray" className="my-4">
+                    Our Teams
+                  </Typography>
                 </div>
               </div>
               {/* <div className="my-8 text-center">
@@ -122,7 +74,7 @@ export function AboutUs() {
               </div> */}
 
               <div className="mb-10 border-blue-gray-50">
-                <div className="block md:hidden">
+                <Card className="block md:hidden mb-4">
                   <Select size="lg" label="Select Year" onChange={(e) => setOpenTab(e)}>
                     {teamDetails.map(({ attributes }) => {
                       return (<Option key={attributes.year} value={attributes.year}>
@@ -130,7 +82,7 @@ export function AboutUs() {
                       </Option>)
                     })}
                   </Select>
-                </div>
+                </Card>
                 <div className="flex flex-row">
                   <div className="hidden md:block">
                     <Card className="w-full max-w-[20rem] md:h-[75vh] p-4 shadow-xl shadow-blue-gray-900/5">
@@ -146,18 +98,27 @@ export function AboutUs() {
                   <div className="w-full md:pl-2">
                     {teamDetails.map(({ attributes }) => {
                       let show = attributes.year == openTab ? "block" : "hidden";
-                      return (<Card key={attributes.year} className={"w-full md:h-[75vh] overflow-y-scroll p-4 shadow-xl shadow-blue-gray-900/5 " + show}>
-                        <div className="my-0">
-                          <Typography variant="h2" color="blue-gray" className="mb-2">
-                            {attributes.year} Basketball
-                          </Typography>
-                          <img
-                            className="h-100 w-full rounded-lg object-cover object-center mt-4"
-                            src={attributes.main_image}
-                            alt={attributes.year}
-                          />
-                          <div className="mt-6 mb-2 font-medium">
-                            <ReactMarkdown>{attributes.description}</ReactMarkdown>
+                      return (<Card key={attributes.year} className={"w-full md:h-[75vh] p-4 shadow-xl shadow-blue-gray-900/5 " + show}>
+                        <div className="my-2 p-2 md:h-[70vh] overflow-y-scroll">
+                          <div className="my-0">
+                            <div className="flex flex-wrap">
+                              <div className="w-full px-4 lg:order-1 lg:w-8/12">
+                                <Typography variant="h2" color="blue-gray" className="mb-2">
+                                  {attributes.year} Basketball
+                                </Typography>
+                              </div>
+                              <div className="flex w-full justify-center lg:order-3 lg:mt-0 lg:w-4/12 lg:justify-end">
+                                <Button color="blue" size="sm">View Gallery</Button>
+                              </div>
+                            </div>
+                            <img
+                              className="h-100 w-full rounded-lg object-cover object-center mt-4"
+                              src={attributes.main_image}
+                              alt={attributes.year}
+                            />
+                            <div className="mt-6 mb-2 font-medium">
+                              <ReactMarkdown>{attributes.description}</ReactMarkdown>
+                            </div>
                           </div>
                         </div>
                       </Card>)
