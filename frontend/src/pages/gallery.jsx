@@ -8,18 +8,21 @@ import {
 import { Footer } from "@/widgets/layout";
 import axios from "../axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 export function Gallery() {
   const [photos, setPhotos] = useState([]);
   const [open, setOpen] = useState(false);
- 
+  let [searchParams, setSearchParams] = useSearchParams();
+  const year = searchParams.get("year")
+  
   const handleOpen = () => setOpen((cur) => !cur);
 
   useEffect(() => {
+    let query = year ? `&filters\[year\][$eq]=${year}`: ""
     axios
-      .get(`/photos?populate=*`)
+      .get(`/photos?populate=*`+query)
       .then((res) => {
         setPhotos(res.data.data);
         console.log(res.data.data)
@@ -38,22 +41,22 @@ export function Gallery() {
       <section className="relative bg-blue-gray-50/50 pt-10">
         <div className="mx-auto">
           <div className="relative -mt-64 mb-6 flex w-full min-w-0 flex-col break-words rounded-3xl bg-white shadow-xl shadow-gray-500/5">
-            <div className="px-6">
+            <div>
               <div className="flex flex-wrap justify-center">
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-5">
                   {photos &&
                     photos.map(({ id, attributes }) => (
                       <Card key={id}
-                        className="h-64 w-96 cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
-                        onClick={handleOpen}
-                      >
-                        <img
-                          alt="nature"
-                          className="h-full w-full object-cover object-center"
-                          src={import.meta.env.VITE_STRAPI_URL + attributes.img.data[0].attributes.formats.thumbnail.url}
-                        />
-                      </Card>
+                          className="h-64 lg:w-[20vw] md:w-[30vw] cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
+                          onClick={handleOpen}
+                        >
+                          <img
+                            alt="nature"
+                            className="h-full w-full object-cover object-center"
+                            src={import.meta.env.VITE_STRAPI_URL + attributes.img.data[0].attributes.formats.thumbnail.url}
+                          />
+                        </Card>
                     ))}
                 </div>
 

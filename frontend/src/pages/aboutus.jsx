@@ -102,7 +102,7 @@ export function AboutUs() {
                         <div className="my-2 p-2 md:h-[70vh] overflow-y-scroll">
                           <div className="my-0">
                             <div className="flex flex-wrap">
-                              <div className="w-full px-4 lg:order-1 lg:w-8/12">
+                              <div className="w-full lg:order-1 lg:w-8/12">
                                 <Typography variant="h2" color="blue-gray" className="mb-2">
                                   {attributes.year} Basketball
                                 </Typography>
