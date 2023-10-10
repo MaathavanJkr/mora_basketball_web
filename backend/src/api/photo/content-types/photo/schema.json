@@ -31,6 +31,13 @@
     },
     "year": {
       "type": "string"
+    },
+    "imgs": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
