@@ -43,7 +43,7 @@ export function Home() {
       </div>
 
       <div className="flex justify-center">
-        <section className="-mt-10 bg-gray-50 px-4 pb-20 pt-4">
+        <section className="-mt-10 bg-gray-50 px-4">
           <Blog />
           {/* <div className="container mx-auto"> */}
           {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">

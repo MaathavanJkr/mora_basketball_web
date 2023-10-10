@@ -1,9 +1,9 @@
-import { Home, AboutUs, SignIn, Gallery, ContactUs } from "@/pages";
+import { Home, AboutUs, Achievements, Gallery, Blog, ContactUs } from "@/pages";
 import {
   HomeIcon,
   UserCircleIcon,
   ArrowRightOnRectangleIcon,
-  UserPlusIcon,
+  PencilSquareIcon,
   TrophyIcon,
   PhotoIcon,
   PhoneIcon,
@@ -22,17 +22,23 @@ export const routes = [
     path: "/aboutus",
     element: <AboutUs />,
   },
-  {
-    icon: TrophyIcon,
-    name: "Acheivements",
-    path: "/Acheivements",
-    element: <SignIn />,
-  },
+  // {
+  //   icon: TrophyIcon,
+  //   name: "Acheivements",
+  //   path: "/acheivements",
+  //   element: <Achievements />,
+  // },
   {
     icon: PhotoIcon,
     name: "Gallery",
     path: "/gallery",
     element: <Gallery />,
+  },
+  {
+    icon: PencilSquareIcon,
+    name: "Blog",
+    path: "/blog",
+    element: <Blog />,
   },
   {
     icon: PhoneIcon,

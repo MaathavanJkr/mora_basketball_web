@@ -72,14 +72,16 @@ export function Gallery() {
         <div className="mx-auto">
           <div className="relative -mt-64 flex w-full min-w-0 flex-col break-words rounded-3xl bg-blue-gray-100 shadow-xl shadow-gray-500/5">
             <div>
-              <div className="flex flex-wrap justify-center pb-10">
-                <div className="flex w-full justify-center">
-                  <Typography variant="h1" color="blue-gray" className="my-4">
-                    Gallery
-                  </Typography>
-                </div>
-                <div className="container px-2">
-                  <Card className="mb-4">
+              <div className="flex flex-wrap justify-center pb-10 px-6 pt-2">
+                <Card className="w-full my-2">
+                  <div className="flex w-full justify-center">
+                    <Typography variant="h1" color="blue-gray" className="my-4">
+                      Gallery
+                    </Typography>
+                  </div>
+                </Card>
+                <div className="w-full">
+                  <Card className="flex w-full justify-center mb-2">
                     <Select size="lg" label="Select Year" onChange={(e) => changeYear(e)}>
                       {Object.keys(galleryData).map((year) => {
                         return (<Option key={year} value={year}>
@@ -90,39 +92,40 @@ export function Gallery() {
                   </Card>
                 </div>
 
-                <div className="flex flex-wrap justify-center px-2">
+                <div className="flex flex-wrap justify-center w-full">
                   <Card className="flex w-full justify-center px-4 shadow-xl shadow-blue-gray-900/5">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 py-5">
                       {(!nameParam && photos) &&
                         photos.map(({ name, img, year }) => (
-                          <Card key={name}
-                            className="h-64 lg:w-[20vw] md:w-[30vw] cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
-                            onClick={() => {
-                              // handleOpen();
-                              // setPreviewImg(import.meta.env.VITE_STRAPI_URL + img.data[0].attributes.url)
-                              setSearchParams({ ["year"]: year, ["name"]: name });
-                            }}
-                          >
-                            <figure className="relative w-full">
-                              <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/30" />
-                              <img
-                                alt={name}
-                                className="h-64 w-full rounded-xl object-cover object-center"
-                                src={import.meta.env.VITE_STRAPI_URL + img.data[0].attributes.formats.thumbnail.url}
-                              />
-                              <figcaption className="absolute px-4 text-lg text-white bottom-6">
-                                <div>
-                                  <Typography variant="h5" color="white">
-                                    {name}
-                                  </Typography>
-                                </div>
-                              </figcaption>
-                            </figure>
+                          <div key={name} className="flex flex-wrap justify-center">
+                            <Card
+                              className="h-64 lg:w-[20vw] md:w-[30vw] cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
+                              onClick={() => {
+                                // handleOpen();
+                                // setPreviewImg(import.meta.env.VITE_STRAPI_URL + img.data[0].attributes.url)
+                                setSearchParams({ ["year"]: year, ["name"]: name });
+                              }}
+                            >
+                              <figure className="relative w-full">
+                                <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/60 via-black/30" />
+                                <img
+                                  alt={name}
+                                  className="h-64 w-full rounded-xl object-cover object-center"
+                                  src={import.meta.env.VITE_STRAPI_URL + img.data[0].attributes.formats.thumbnail.url}
+                                />
+                                <figcaption className="absolute px-4 text-lg text-white bottom-6">
+                                  <div>
+                                    <Typography variant="h5" color="white">
+                                      {name}
+                                    </Typography>
+                                  </div>
+                                </figcaption>
+                              </figure>
 
-                          </Card>
+                            </Card></div>
                         ))}
                       {nameParam && photos &&
-                        photos.map(({ imgs}) =>  imgs.data.map(({ id, attributes }) => (
+                        photos.map(({ imgs }) => imgs.data.map(({ id, attributes }) => (
                           <Card key={id}
                             className="h-64 lg:w-[20vw] md:w-[30vw] cursor-pointer overflow-hidden transition-opacity hover:opacity-90"
                             onClick={() => {

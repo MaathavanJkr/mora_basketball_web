@@ -22,7 +22,7 @@ export function ContactUs() {
         <div className="mx-auto">
           <div className="relative -mt-64 flex w-full min-w-0 flex-col break-words rounded-3xl bg-blue-gray-100 shadow-xl shadow-gray-500/5">
             <div className="px-6">
-              <div className="flex flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center pt-2">
                 {/* <div className="flex w-full justify-center px-4 lg:order-2 lg:w-3/12">
                   <div className="relative">
                     <div className="-mt-20 w-40">
@@ -35,15 +35,17 @@ export function ContactUs() {
                     </div>
                   </div>
                 </div> */}
-                <div className="flex w-full justify-center">
-                  <Typography variant="h1" color="blue-gray" className="my-4">
-                    Contact Us
-                  </Typography>
-                </div>
+                <Card className="w-full my-2">
+                  <div className="flex w-full justify-center">
+                    <Typography variant="h1" color="blue-gray" className="my-4">
+                      Contact Us
+                    </Typography>
+                  </div>
+                </Card>
               </div>
 
-              <div className="flex flex-wrap justify-center px-2 pb-4">
-                <Card className="w-full px-4 shadow-xl shadow-blue-gray-900/5">
+              <div className="flex flex-wrap justify-center pb-4">
+                <Card className="w-full px-4 bg-gray-100 shadow-xl shadow-blue-gray-900/5">
                   {/* <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                     <div className="mx-auto mb-10 lg:max-w-xl sm:text-center">
                       <Typography variant="h3" color="blue-gray" className="my-4">
@@ -187,7 +189,7 @@ export function ContactUs() {
                       {/* Code block starts */}
                       <dh-component>
 
-                        <div className="w-full bg-gray-100 px-10 pt-10">
+                        <div className="w-full px-10 pt-10">
                           <div className="container flex justify-center mx-auto pb-10">
                             <div>
                               <Typography variant="h3" color="blue-gray">
@@ -224,7 +226,7 @@ export function ContactUs() {
                                       Captain
                                     </p>
                                     <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium. Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium. Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
                                     </p>
                                     <div className="w-full flex justify-center pt-5 pb-5">
                                       <a href="javascript:void(0)" className="mx-5">
@@ -317,8 +319,8 @@ export function ContactUs() {
                                       Vice Captain
                                     </p>
                                     <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                     Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
+                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
                                     </p>
                                     <div className="w-full flex justify-center pt-5 pb-5">
                                       <a href="javascript:void(0)" className="mx-5">
@@ -411,8 +413,8 @@ export function ContactUs() {
                                       Secretary
                                     </p>
                                     <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                     Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
+                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
                                     </p>
                                     <div className="w-full flex justify-center pt-5 pb-5">
                                       <a href="javascript:void(0)" className="mx-5">
@@ -520,7 +522,7 @@ export function ContactUs() {
                                       Captain
                                     </p>
                                     <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium. Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium. Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
                                     </p>
                                     <div className="w-full flex justify-center pt-5 pb-5">
                                       <a href="javascript:void(0)" className="mx-5">
@@ -613,8 +615,8 @@ export function ContactUs() {
                                       Vice Captain
                                     </p>
                                     <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                     Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
+                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
                                     </p>
                                     <div className="w-full flex justify-center pt-5 pb-5">
                                       <a href="javascript:void(0)" className="mx-5">
@@ -707,8 +709,8 @@ export function ContactUs() {
                                       Secretary
                                     </p>
                                     <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                     Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
+                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
+                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
                                     </p>
                                     <div className="w-full flex justify-center pt-5 pb-5">
                                       <a href="javascript:void(0)" className="mx-5">

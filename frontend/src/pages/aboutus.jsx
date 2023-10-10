@@ -37,7 +37,7 @@ export function AboutUs() {
         <div className="mx-auto">
           <div className="relative -mt-64 flex w-full min-w-0 flex-col break-words rounded-3xl bg-blue-gray-100 shadow-xl shadow-gray-500/5">
             <div className="px-6">
-              <div className="flex flex-wrap justify-center">
+              <div className="flex flex-wrap justify-center pt-2">
                 {/* <div className="flex w-full justify-center px-4 lg:order-2 lg:w-3/12">
                   <div className="relative">
                     <div className="-mt-20 w-40">
@@ -50,11 +50,15 @@ export function AboutUs() {
                     </div>
                   </div>
                 </div> */}
-                <div className="flex w-full justify-center">
-                  <Typography variant="h1" color="blue-gray" className="my-4">
-                    Our Teams
-                  </Typography>
-                </div>
+
+                <Card className="w-full my-2">
+                  <div className="flex w-full justify-center">
+                    <Typography variant="h1" color="blue-gray" className="my-4">
+                      Our Teams
+                    </Typography>
+
+                  </div>
+                </Card>
               </div>
               {/* <div className="my-8 text-center">
                 <Typography variant="h2" color="blue-gray" className="mb-2">

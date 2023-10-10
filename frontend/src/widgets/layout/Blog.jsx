@@ -1,6 +1,31 @@
-import React from "react";
+import {
+  Avatar, Typography, Button, Card, List, ListItem, Select, Option, Tabs,
+  TabsHeader,
+  TabsBody,
+  Tab,
+  TabPanel,
+} from "@material-tailwind/react";
+import { Footer } from "@/widgets/layout";
+import axios from "../../axios";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import BlogCard from "../cards/blog-card";
 
 const Blog = () => {
+
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`/blogs?populate=*&sort=createdAt:desc`)
+      .then((res) => {
+        setBlogs(res.data.data);
+        console.log(res.data.data)
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  }, []);
   return (
     <>
       <section className="pb-10 pt-20 lg:pb-20 lg:pt-[120px]">
@@ -22,26 +47,16 @@ const Blog = () => {
             </div>
           </div>
 
-          <div className="-mx-4 flex flex-wrap">
-            <BlogCard
-              date="Dec 22, 2023"
-              CardTitle="3x3 Basketball Champs Mora BB"
-              CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-              image="img/favicon.jpeg"
-            />
-            <BlogCard
-              date="Dec 22, 2023"
-              CardTitle="We install New Ring"
-              CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-              image="img/favicon.jpeg"
-            />
-            <BlogCard
-              date="Dec 22, 2023"
-              CardTitle="5x5 Summer season practices start"
-              CardDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-              image="img/favicon.jpeg
-              "
-            />
+          <div class="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+            <div class="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+              {blogs && blogs.slice(0, 3).map(({ id, attributes }) => (<BlogCard
+                date={attributes.createdAt}
+                CardTitle={attributes.title}
+                CardDescription={attributes.content.substring(0, 200) + "..."}
+                image={import.meta.env.VITE_STRAPI_URL + attributes.img.data.attributes.formats.medium.url}
+                link={"blog?id="+id}
+              />))}
+            </div>
           </div>
         </div>
       </section>
@@ -50,33 +65,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
-const BlogCard = ({ image, date, CardTitle, CardDescription }) => {
-  return (
-    <>
-      <div className="w-full px-4 md:w-1/2 lg:w-1/3">
-        <div className="mx-auto mb-10 max-w-[370px]">
-          <div className="mb-8 overflow-hidden rounded">
-            <img src={image} alt="" className="w-full" />
-          </div>
-          <div>
-            {date && (
-              <span className="bg-primary mb-5 inline-block rounded px-4 py-1 text-center text-xs font-semibold leading-loose text-white">
-                {date}
-              </span>
-            )}
-            <h3>
-              <a
-                href="/#"
-                className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl"
-              >
-                {CardTitle}
-              </a>
-            </h3>
-            <p className="text-body-color text-base">{CardDescription}</p>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
