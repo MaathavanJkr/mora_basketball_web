@@ -80,37 +80,22 @@ export function Footer({ title, description, socials, menus, copyright }) {
 
 Footer.defaultProps = {
   title: "Mora Basketball",
-  description: "Stay connected with usss",
+  description: "Stay connected with us",
   socials: [
     {
       color: "blue",
       name: "facebook",
-      path: "https://www.facebook.com/CreativeTim",
-    },
-    {
-      color: "light-blue",
-      name: "twitter",
-      path: "https://www.twitter.com/creativetim",
+      path: "https://www.facebook.com/MoraBasketball",
     },
     {
       color: "purple",
       name: "instagram",
-      path: "https://www.instagram.com/creativetimofficial/",
+      path: "https://www.instagram.com/mora_basketball/",
     },
     {
       color: "pink",
-      name: "dribbble",
-      path: "https://www.dribbble.com/creativetim",
-    },
-    {
-      color: "red",
-      name: "youtube",
-      path: "https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w",
-    },
-    {
-      color: "black",
-      name: "github",
-      path: "https://github.com/creativetimofficial/material-tailwind",
+      name: "tiktok",
+      path: "https://www.tiktok.com/@mora_basketball",
     },
   ],
   menus: [
@@ -153,15 +138,7 @@ Footer.defaultProps = {
   ],
   copyright: (
     <>
-      Copyright © {year} By MoraBB{" "}
-      <a
-        href="https://www.creative-tim.com?ref=mtk"
-        target="_blank"
-        className="text-blue-gray-500 transition-colors hover:text-blue-500"
-      >
-        MoraBBBB
-      </a>
-      .
+      Copyright © {year} By Mora Basketball.
     </>
   ),
 };

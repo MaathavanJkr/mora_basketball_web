@@ -1,4 +1,4 @@
-import { Home, AboutUs, SignIn, Gallery } from "@/pages";
+import { Home, AboutUs, SignIn, Gallery, ContactUs } from "@/pages";
 import {
   HomeIcon,
   UserCircleIcon,
@@ -37,9 +37,8 @@ export const routes = [
   {
     icon: PhoneIcon,
     name: "Contact Us",
-    href: "https://www.material-tailwind.com/docs/react/installation",
-    target: "_blank",
-    element: "",
+    path: "/contact",
+    element: <ContactUs />,
   },
 ];
 

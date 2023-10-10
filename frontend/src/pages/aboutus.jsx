@@ -19,6 +19,7 @@ export function AboutUs() {
       .get(`/team-details?sort=year:desc`)
       .then((res) => {
         setTeamDetails(res.data.data);
+        console.log(res.data.data)
         setOpenTab(res.data.data[0].attributes.year.toString())
       })
       .catch((error) => {
@@ -108,7 +109,9 @@ export function AboutUs() {
                                 </Typography>
                               </div>
                               <div className="flex w-full justify-center lg:order-3 lg:mt-0 lg:w-4/12 lg:justify-end">
-                                <Button color="blue" size="sm">View Gallery</Button>
+                                <a href={"gallery?year=" + attributes.year}>
+                                  <Button color="blue" size="sm">View Gallery</Button>
+                                </a>
                               </div>
                             </div>
                             <img
@@ -116,8 +119,8 @@ export function AboutUs() {
                               src={attributes.main_image}
                               alt={attributes.year}
                             />
-                            <div className="mt-6 mb-2 font-medium">
-                              <ReactMarkdown>{attributes.description}</ReactMarkdown>
+                            <div className="mt-6 mb-2">
+                              <ReactMarkdown className="markdown">{attributes.description}</ReactMarkdown>
                             </div>
                           </div>
                         </div>
