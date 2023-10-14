@@ -15,7 +15,7 @@ export function Footer({ title, description, socials, menus, copyright }) {
             <Typography className="font-normal text-blue-gray-500">
               {description}
             </Typography>
-            <div className="mx-auto mb-8 mt-6 flex justify-center gap-2 md:mb-0 lg:justify-start">
+            <div className="mx-auto mb-8 mt-6 flex justify-center gap-2 md:mb-2 lg:justify-start">
               {socials.map(({ color, name, path }) => (
                 <a
                   key={name}
@@ -31,6 +31,15 @@ export function Footer({ title, description, socials, menus, copyright }) {
                 </a>
               ))}
             </div>
+            <a
+              href="mailto:basketball.uom@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Typography className="font-normal text-blue-gray-300">
+                basketball.uom@gmail.com
+              </Typography>
+            </a>
           </div>
           {/* <div className="mx-auto mt-12 grid w-max grid-cols-2 gap-24 lg:mt-0">
             {menus.map(({ name, items }) => (
@@ -136,11 +145,7 @@ Footer.defaultProps = {
       ],
     },
   ],
-  copyright: (
-    <>
-      Copyright © {year} By Mora Basketball.
-    </>
-  ),
+  copyright: <>Copyright © {year} By Mora Basketball.</>,
 };
 
 Footer.propTypes = {

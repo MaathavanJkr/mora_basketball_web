@@ -1,23 +1,11 @@
-import {
-  Avatar,
-  Typography,
-  Button,
-  Card,
-  List,
-  ListItem,
-  Select,
-  Option,
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
+import React from "react";
+import { Typography, Card, IconButton } from "@material-tailwind/react";
 import { Footer } from "@/widgets/layout";
 import axios from "../axios";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { TeamCard } from "@/widgets/cards";
+import { EnvelopeIcon } from "@heroicons/react/24/solid";
 
 export function ContactUs() {
   const [team, setTeam] = useState([]);
@@ -221,6 +209,54 @@ export function ContactUs() {
                         {/* Code block starts */}
                         <dh-component>
                           <div className="w-full px-10 pt-10">
+                            <div className="container mx-auto flex justify-center pb-2">
+                              <div>
+                                <Typography variant="h3" color="blue-gray">
+                                  Get in touch with us
+                                </Typography>
+                              </div>
+                            </div>
+                            <div className="container mx-auto flex justify-center gap-4 pb-10">
+                              <a
+                                href="mailto:basketball.uom@gmail.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <IconButton className="rounded bg-[#1E88E5] hover:shadow-[#1E88E5]/20 focus:shadow-[#1E88E5]/20 active:shadow-[#1E88E5]/10">
+                                  {React.createElement(EnvelopeIcon, {
+                                    className:
+                                      "w-[20px] h-[20px]",
+                                  })}
+                                </IconButton>
+                              </a>
+                              <a
+                                href="https://www.facebook.com/MoraBasketball"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <IconButton className="rounded bg-[#4267B2] hover:shadow-[#4267B2]/20 focus:shadow-[#4267B2]/20 active:shadow-[#4267B2]/10">
+                                  <i className="fab fa-facebook text-lg" />
+                                </IconButton>
+                              </a>
+                              <a
+                                href="https://www.instagram.com/mora_basketball"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <IconButton className="rounded bg-[#E1306C] hover:shadow-[#E1306C]/20 focus:shadow-[#E1306C]/20 active:shadow-[#E1306C]/10">
+                                  <i className="fab fa-instagram text-lg" />
+                                </IconButton>
+                              </a>
+                              <a
+                                href="https://www.tiktok.com/@mora_basketball"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <IconButton className="rounded bg-[#ff0050] hover:shadow-[#ff0050]/20 focus:shadow-[#ff0050]/20 active:shadow-[#ff0050]/10">
+                                  <i className="fab fa-tiktok text-lg" />
+                                </IconButton>
+                              </a>
+                            </div>
                             <div className="container mx-auto flex justify-center pb-10">
                               <div>
                                 <Typography variant="h3" color="blue-gray">
@@ -232,10 +268,10 @@ export function ContactUs() {
                               <div
                                 role="list"
                                 aria-label="Behind the scenes People "
-                                className="flex-wrap items-center sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around xl:justify-between"
+                                className="flex-wrap items-center sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around"
                               >
                                 <TeamCard
-                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  img={team.attributes.men_captain.img}
                                   name={team.attributes.men_captain.name}
                                   position="Captain"
                                   fb={team.attributes.men_captain.fb}
@@ -243,20 +279,12 @@ export function ContactUs() {
                                   intro={team.attributes.men_captain.intro}
                                 />
                                 <TeamCard
-                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  img={team.attributes.men_vice_captain.img}
                                   name={team.attributes.men_vice_captain.name}
                                   position="Vice Captain"
                                   fb={team.attributes.men_vice_captain.fb}
                                   insta={team.attributes.men_vice_captain.insta}
                                   intro={team.attributes.men_vice_captain.intro}
-                                />
-                                <TeamCard
-                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
-                                  name={team.attributes.men_secretary.name}
-                                  position="Secretary"
-                                  fb={team.attributes.men_secretary.fb}
-                                  insta={team.attributes.men_secretary.insta}
-                                  intro={team.attributes.men_secretary.intro}
                                 />
                               </div>
                             </div>
@@ -271,10 +299,10 @@ export function ContactUs() {
                               <div
                                 role="list"
                                 aria-label="Behind the scenes People "
-                                className="flex-wrap items-center sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around xl:justify-between"
+                                className="flex-wrap items-center sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around"
                               >
                                 <TeamCard
-                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  img={team.attributes.women_captain.img}
                                   name={team.attributes.women_captain.name}
                                   position="Captain"
                                   fb={team.attributes.women_captain.fb}
@@ -282,20 +310,16 @@ export function ContactUs() {
                                   intro={team.attributes.women_captain.intro}
                                 />
                                 <TeamCard
-                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  img={team.attributes.women_vice_captain.img}
                                   name={team.attributes.women_vice_captain.name}
                                   position="Vice Captain"
                                   fb={team.attributes.women_vice_captain.fb}
-                                  insta={team.attributes.women_vice_captain.insta}
-                                  intro={team.attributes.women_vice_captain.intro}
-                                />
-                                <TeamCard
-                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
-                                  name={team.attributes.women_secretary.name}
-                                  position="Secretary"
-                                  fb={team.attributes.women_secretary.fb}
-                                  insta={team.attributes.women_secretary.insta}
-                                  intro={team.attributes.women_secretary.intro}
+                                  insta={
+                                    team.attributes.women_vice_captain.insta
+                                  }
+                                  intro={
+                                    team.attributes.women_vice_captain.intro
+                                  }
                                 />
                               </div>
                             </div>

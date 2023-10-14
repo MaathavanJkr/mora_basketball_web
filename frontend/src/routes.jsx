@@ -1,4 +1,4 @@
-import { Home, AboutUs, Achievements, Gallery, Blog, ContactUs } from "@/pages";
+import { Home, Teams, Achievements, Gallery, Blog, ContactUs } from "@/pages";
 import {
   HomeIcon,
   UserCircleIcon,
@@ -19,8 +19,8 @@ export const routes = [
   {
     icon: UserCircleIcon,
     name: "Teams",
-    path: "/aboutus",
-    element: <AboutUs />,
+    path: "/teams",
+    element: <Teams />,
   },
   // {
   //   icon: TrophyIcon,

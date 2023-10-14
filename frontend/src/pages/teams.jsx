@@ -10,7 +10,7 @@ import axios from "../axios";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-export function AboutUs() {
+export function Teams() {
   const [teamDetails, setTeamDetails] = useState([]);
   const [openTab, setOpenTab] = useState();
 
@@ -207,4 +207,4 @@ export function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default Teams;

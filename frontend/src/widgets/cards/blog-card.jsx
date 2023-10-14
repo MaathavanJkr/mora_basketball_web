@@ -7,16 +7,15 @@ export function BlogCard({ image, date, CardTitle, CardDescription, link }) {
         src={image}
         className="object-cover w-full h-64"
         alt=""
+        loading="lazy"
       />
       <div className="px-5 border border-t-0">
         <p className="my-3 text-xs font-semibold tracking-wide uppercase">
           <span className="text-gray-600">{date}</span>
         </p>
         <a
-          href="/"
-          aria-label="Category"
-          title="Visit the East"
-          className="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
+          href={link}
+          className="uppercase inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700 text-dark"
         >
           {CardTitle}
         </a>
