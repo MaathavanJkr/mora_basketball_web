@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "current_teams",
+  "info": {
+    "singularName": "current-team",
+    "pluralName": "current-teams",
+    "displayName": "Current_Team",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "men_captain": {
+      "type": "json"
+    },
+    "men_vice_captain": {
+      "type": "json"
+    },
+    "men_secretary": {
+      "type": "json"
+    },
+    "women_captain": {
+      "type": "json"
+    },
+    "women_vice_captain": {
+      "type": "json"
+    },
+    "women_secretary": {
+      "type": "json"
+    }
+  }
+}

@@ -19,7 +19,7 @@ export function Home() {
   return (
     <>
       <div className="relative flex h-screen content-center items-center justify-center pb-32 pt-16">
-      <div className="absolute top-0 h-full w-full bg-[url('/img/champs2022.jpg')] bg-cover bg-center" />
+      <div className="absolute top-0 h-full w-full bg-[url('/img/champs23.jpg')] bg-cover bg-center" />
         <div className="absolute top-0 h-full w-full bg-black/75 bg-cover bg-center" />
         <div className="max-w-8xl container relative mx-auto">
           <div className="flex flex-wrap items-center">
@@ -32,10 +32,7 @@ export function Home() {
                 Mora Basketball
               </Typography>
               <Typography variant="lead" color="white" className="opacity-80">
-                Mora basketball 2023 sample design by Mora Basketball by Mora
-                Basketball. Mora basketball 2023 sample design by Mora
-                Basketball by Mora Basketball. Mora basketball 2023 sample
-                design by Mora Basketball by Mora Basketball.
+              We're excited to have you here as we embark on a thrilling journey through the world of collegiate basketball. As an integral part of University of Moratuwa, our basketball team stands for excellence, sportsmanship, and unwavering dedication both on and off the court. This website is your gateway to stay connected with all things related to our team.
               </Typography>
             </div>
           </div>

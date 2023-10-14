@@ -1,5 +1,13 @@
 import {
-  Avatar, Typography, Button, Card, List, ListItem, Select, Option, Tabs,
+  Avatar,
+  Typography,
+  Button,
+  Card,
+  List,
+  ListItem,
+  Select,
+  Option,
+  Tabs,
   TabsHeader,
   TabsBody,
   Tab,
@@ -9,8 +17,26 @@ import { Footer } from "@/widgets/layout";
 import axios from "../axios";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
+import { TeamCard } from "@/widgets/cards";
 
 export function ContactUs() {
+  const [team, setTeam] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get(`/current-team`)
+      .then((res) => {
+        setTeam(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
   return (
     <>
       <section className="relative block h-[50vh]">
@@ -35,7 +61,7 @@ export function ContactUs() {
                     </div>
                   </div>
                 </div> */}
-                <Card className="w-full my-2">
+                <Card className="my-2 w-full">
                   <div className="flex w-full justify-center">
                     <Typography variant="h1" color="blue-gray" className="my-4">
                       Contact Us
@@ -45,7 +71,7 @@ export function ContactUs() {
               </div>
 
               <div className="flex flex-wrap justify-center pb-4">
-                <Card className="w-full px-4 bg-gray-100 shadow-xl shadow-blue-gray-900/5">
+                <Card className="w-full bg-gray-100 px-4 shadow-xl shadow-blue-gray-900/5">
                   {/* <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                     <div className="mx-auto mb-10 lg:max-w-xl sm:text-center">
                       <Typography variant="h3" color="blue-gray" className="my-4">
@@ -182,618 +208,106 @@ export function ContactUs() {
                       </div>
                     </div>
                   </div> */}
-
-                  <>
-                    {/* component */}
-                    <div className="mb-16">
-                      {/* Code block starts */}
-                      <dh-component>
-
-                        <div className="w-full px-10 pt-10">
-                          <div className="container flex justify-center mx-auto pb-10">
-                            <div>
-                              <Typography variant="h3" color="blue-gray">
-                                Men's Team
-                              </Typography>
+                  {loading ? (
+                    <>
+                      <div className="container mx-auto flex justify-center pb-10">
+                        Loading...
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      {/* component */}
+                      <div className="mb-16">
+                        {/* Code block starts */}
+                        <dh-component>
+                          <div className="w-full px-10 pt-10">
+                            <div className="container mx-auto flex justify-center pb-10">
+                              <div>
+                                <Typography variant="h3" color="blue-gray">
+                                  Men's Team
+                                </Typography>
+                              </div>
                             </div>
-                          </div>
-                          <div className="container mx-auto">
-                            <div
-                              role="list"
-                              aria-label="Behind the scenes People "
-                              className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"
-                            >
+                            <div className="container mx-auto">
                               <div
-                                role="listitem"
-                                className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
+                                role="list"
+                                aria-label="Behind the scenes People "
+                                className="flex-wrap items-center sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around xl:justify-between"
                               >
-                                <div className="rounded overflow-hidden shadow-md bg-white">
-                                  <div className="absolute -mt-20 w-full flex justify-center">
-                                    <div className="h-32 w-32">
-                                      <img
-                                        src="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
-                                        alt="Display Picture of Andres Berlin"
-                                        role="img"
-                                        className="rounded-full object-cover h-full w-full shadow-md"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="px-6 mt-16">
-                                    <h1 className="font-bold text-3xl text-center mb-1">
-                                      Rukshan
-                                    </h1>
-                                    <p className="text-gray-800 text-sm text-center">
-                                      Captain
-                                    </p>
-                                    <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium. Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
-                                    </p>
-                                    <div className="w-full flex justify-center pt-5 pb-5">
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Github" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-github"
-                                          >
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Twitter" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-twitter"
-                                          >
-                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Instagram" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-instagram"
-                                          >
-                                            <rect
-                                              x={2}
-                                              y={2}
-                                              width={20}
-                                              height={20}
-                                              rx={5}
-                                              ry={5}
-                                            />
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
+                                <TeamCard
+                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  name={team.attributes.men_captain.name}
+                                  position="Captain"
+                                  fb={team.attributes.men_captain.fb}
+                                  insta={team.attributes.men_captain.insta}
+                                  intro={team.attributes.men_captain.intro}
+                                />
+                                <TeamCard
+                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  name={team.attributes.men_vice_captain.name}
+                                  position="Vice Captain"
+                                  fb={team.attributes.men_vice_captain.fb}
+                                  insta={team.attributes.men_vice_captain.insta}
+                                  intro={team.attributes.men_vice_captain.intro}
+                                />
+                                <TeamCard
+                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  name={team.attributes.men_secretary.name}
+                                  position="Secretary"
+                                  fb={team.attributes.men_secretary.fb}
+                                  insta={team.attributes.men_secretary.insta}
+                                  intro={team.attributes.men_secretary.intro}
+                                />
                               </div>
-                              <div
-                                role="listitem"
-                                className="xl:w-1/3 lg:mx-3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
-                              >
-                                <div className="rounded overflow-hidden shadow-md bg-white">
-                                  <div className="absolute -mt-20 w-full flex justify-center">
-                                    <div className="h-32 w-32">
-                                      <img
-                                        src="https://cdn.tuk.dev/assets/photo-1530577197743-7adf14294584.jfif"
-                                        alt="Display Picture of Silene Tokyo"
-                                        role="img"
-                                        className="rounded-full object-cover h-full w-full shadow-md"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="px-6 mt-16">
-                                    <h1 className="font-bold text-3xl text-center mb-1">
-                                      Gimhan
-                                    </h1>
-                                    <p className="text-gray-800 text-sm text-center">
-                                      Vice Captain
-                                    </p>
-                                    <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
-                                    </p>
-                                    <div className="w-full flex justify-center pt-5 pb-5">
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Github" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-github"
-                                          >
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Twitter" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-twitter"
-                                          >
-                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Instagram" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-instagram"
-                                          >
-                                            <rect
-                                              x={2}
-                                              y={2}
-                                              width={20}
-                                              height={20}
-                                              rx={5}
-                                              ry={5}
-                                            />
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
+                            </div>
+                            <div className="container mx-auto flex justify-center pb-10">
+                              <div>
+                                <Typography variant="h3" color="blue-gray">
+                                  Women's Team
+                                </Typography>
                               </div>
+                            </div>
+                            <div className="container mx-auto">
                               <div
-                                role="listitem"
-                                className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
+                                role="list"
+                                aria-label="Behind the scenes People "
+                                className="flex-wrap items-center sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around xl:justify-between"
                               >
-                                <div className="rounded overflow-hidden shadow-md bg-white">
-                                  <div className="absolute -mt-20 w-full flex justify-center">
-                                    <div className="h-32 w-32">
-                                      <img
-                                        src="https://cdn.tuk.dev/assets/photo-1566753323558-f4e0952af115.jfif"
-                                        alt="Display Picture of Johnson Stone"
-                                        role="img"
-                                        className="rounded-full object-cover h-full w-full shadow-md"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="px-6 mt-16">
-                                    <h1 className="font-bold text-3xl text-center mb-1">
-                                      Vinu
-                                    </h1>
-                                    <p className="text-gray-800 text-sm text-center">
-                                      Secretary
-                                    </p>
-                                    <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
-                                    </p>
-                                    <div className="w-full flex justify-center pt-5 pb-5">
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Github" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-github"
-                                          >
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Twitter" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-twitter"
-                                          >
-                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Instagram" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-instagram"
-                                          >
-                                            <rect
-                                              x={2}
-                                              y={2}
-                                              width={20}
-                                              height={20}
-                                              rx={5}
-                                              ry={5}
-                                            />
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
+                                <TeamCard
+                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  name={team.attributes.women_captain.name}
+                                  position="Captain"
+                                  fb={team.attributes.women_captain.fb}
+                                  insta={team.attributes.women_captain.insta}
+                                  intro={team.attributes.women_captain.intro}
+                                />
+                                <TeamCard
+                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  name={team.attributes.women_vice_captain.name}
+                                  position="Vice Captain"
+                                  fb={team.attributes.women_vice_captain.fb}
+                                  insta={team.attributes.women_vice_captain.insta}
+                                  intro={team.attributes.women_vice_captain.intro}
+                                />
+                                <TeamCard
+                                  img="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
+                                  name={team.attributes.women_secretary.name}
+                                  position="Secretary"
+                                  fb={team.attributes.women_secretary.fb}
+                                  insta={team.attributes.women_secretary.insta}
+                                  intro={team.attributes.women_secretary.intro}
+                                />
                               </div>
                             </div>
                           </div>
-                          <div className="container flex justify-center mx-auto pb-10">
-                            <div>
-                              <Typography variant="h3" color="blue-gray">
-                                Women's Team
-                              </Typography>
-                            </div>
-                          </div>
-                          <div className="container mx-auto">
-                            <div
-                              role="list"
-                              aria-label="Behind the scenes People "
-                              className="lg:flex md:flex sm:flex items-center xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around"
-                            >
-                              <div
-                                role="listitem"
-                                className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
-                              >
-                                <div className="rounded overflow-hidden shadow-md bg-white">
-                                  <div className="absolute -mt-20 w-full flex justify-center">
-                                    <div className="h-32 w-32">
-                                      <img
-                                        src="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif"
-                                        alt="Display Picture of Andres Berlin"
-                                        role="img"
-                                        className="rounded-full object-cover h-full w-full shadow-md"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="px-6 mt-16">
-                                    <h1 className="font-bold text-3xl text-center mb-1">
-                                      Rukshan
-                                    </h1>
-                                    <p className="text-gray-800 text-sm text-center">
-                                      Captain
-                                    </p>
-                                    <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium. Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
-                                    </p>
-                                    <div className="w-full flex justify-center pt-5 pb-5">
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Github" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-github"
-                                          >
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Twitter" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-twitter"
-                                          >
-                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Instagram" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-instagram"
-                                          >
-                                            <rect
-                                              x={2}
-                                              y={2}
-                                              width={20}
-                                              height={20}
-                                              rx={5}
-                                              ry={5}
-                                            />
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                role="listitem"
-                                className="xl:w-1/3 lg:mx-3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
-                              >
-                                <div className="rounded overflow-hidden shadow-md bg-white">
-                                  <div className="absolute -mt-20 w-full flex justify-center">
-                                    <div className="h-32 w-32">
-                                      <img
-                                        src="https://cdn.tuk.dev/assets/photo-1530577197743-7adf14294584.jfif"
-                                        alt="Display Picture of Silene Tokyo"
-                                        role="img"
-                                        className="rounded-full object-cover h-full w-full shadow-md"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="px-6 mt-16">
-                                    <h1 className="font-bold text-3xl text-center mb-1">
-                                      Gimhan
-                                    </h1>
-                                    <p className="text-gray-800 text-sm text-center">
-                                      Vice Captain
-                                    </p>
-                                    <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
-                                    </p>
-                                    <div className="w-full flex justify-center pt-5 pb-5">
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Github" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-github"
-                                          >
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Twitter" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-twitter"
-                                          >
-                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Instagram" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-instagram"
-                                          >
-                                            <rect
-                                              x={2}
-                                              y={2}
-                                              width={20}
-                                              height={20}
-                                              rx={5}
-                                              ry={5}
-                                            />
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                role="listitem"
-                                className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
-                              >
-                                <div className="rounded overflow-hidden shadow-md bg-white">
-                                  <div className="absolute -mt-20 w-full flex justify-center">
-                                    <div className="h-32 w-32">
-                                      <img
-                                        src="https://cdn.tuk.dev/assets/photo-1566753323558-f4e0952af115.jfif"
-                                        alt="Display Picture of Johnson Stone"
-                                        role="img"
-                                        className="rounded-full object-cover h-full w-full shadow-md"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="px-6 mt-16">
-                                    <h1 className="font-bold text-3xl text-center mb-1">
-                                      Vinu
-                                    </h1>
-                                    <p className="text-gray-800 text-sm text-center">
-                                      Secretary
-                                    </p>
-                                    <p className="text-center text-gray-600 text-base pt-3 font-normal">
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies neque eu velit rhoncus pretium.
-                                      Etiam cursus justo sit amet nibh pharetra, non semper nibh egestas.
-                                    </p>
-                                    <div className="w-full flex justify-center pt-5 pb-5">
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Github" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-github"
-                                          >
-                                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Twitter" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-twitter"
-                                          >
-                                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                      <a href="javascript:void(0)" className="mx-5">
-                                        <div aria-label="Instagram" role="img">
-                                          <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width={24}
-                                            height={24}
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="#718096"
-                                            strokeWidth="1.5"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            className="feather feather-instagram"
-                                          >
-                                            <rect
-                                              x={2}
-                                              y={2}
-                                              width={20}
-                                              height={20}
-                                              rx={5}
-                                              ry={5}
-                                            />
-                                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                                          </svg>
-                                        </div>
-                                      </a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </dh-component>
-                      {/* Code block ends */}
-                      {/*- more free and premium Tailwind CSS components at https://tailwinduikit.com/ -*/}
-                    </div>
-                  </>
-
+                        </dh-component>
+                        {/* Code block ends */}
+                        {/*- more free and premium Tailwind CSS components at https://tailwinduikit.com/ -*/}
+                      </div>
+                    </>
+                  )}
                 </Card>
-
               </div>
-
-
             </div>
           </div>
         </div>
